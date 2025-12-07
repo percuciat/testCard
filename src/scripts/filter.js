@@ -77,6 +77,9 @@ class CoursesFilter {
       return;
     }
 
+    // Сбрасываем поиск
+    this.searchInput.value = '';
+
     // Обновляем активный таб
     this.tabs.forEach((t) => t.classList.remove('tabs__item--active'));
     tab.classList.add('tabs__item--active');
