@@ -1,4 +1,7 @@
 import '../styles/main.scss';
+import { initFilter } from './filter.js';
 
-// App ready
-console.log('App initialized');
+// Инициализация при загрузке DOM
+document.addEventListener('DOMContentLoaded', () => {
+  initFilter();
+});

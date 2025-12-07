@@ -33,24 +33,28 @@
 // Filters row - fluid
 .filters {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  gap: $spacing-lg $spacing-xl;
+  gap: $spacing-lg;
   width: 100%;
   max-width: 1230px;
   margin-bottom: $spacing-2xl;
+
+  @media (width <= 900px) {
+    flex-wrap: wrap;
+  }
 }
 
 // Tabs
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-sm $spacing-xl;
+  gap: $spacing-sm $spacing-md;
 
   // 16px, 700
   &__item {
-    padding: 10px 16px;
+    padding: 10px 12px;
     font-family: inherit;
     font-size: 16px;
     font-weight: 700;
@@ -117,13 +121,27 @@
   }
 }
 
-// Courses Grid - fluid with auto-fit
+// Courses Grid - fixed 3 columns
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: $spacing-xl;
   max-width: 1230px;
   width: 100%;
+  transition: opacity 0.2s ease;
+
+  &--loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @media (width <= 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width <= 600px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // Load More Button - base/bold: 16/150
@@ -141,7 +159,9 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: color $transition-fast;
+  transition:
+    color $transition-fast,
+    opacity $transition-fast;
 
   &:hover {
     color: $color-primary;
@@ -151,9 +171,40 @@
     }
   }
 
+  &--loading {
+    opacity: 0.6;
+    cursor: wait;
+
+    .load-more__icon {
+      animation: spin 1s linear infinite;
+    }
+  }
+
   &__icon {
     color: $color-text;
     transition: color $transition-fast;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -165,7 +216,9 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition:
     transform $transition-base,
-    box-shadow $transition-base;
+    box-shadow $transition-base,
+    opacity $transition-base;
+  animation: fade-in-up 0.3s ease forwards;
 
   &:hover {
     transform: translateY(-4px);
@@ -174,7 +227,6 @@
 
   &__image {
     position: relative;
-    border-top: 4px solid $color-success;
 
     img {
       width: 100%;

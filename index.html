@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla SPA</title>
+    <title>Online Courses Catalog</title>
+    <meta
+      name="description"
+      content="Explore our collection of professional online courses in Marketing, Management, HR & Recruiting, Design, and Development"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,12 +27,16 @@
 
         <div class="filters">
           <div class="tabs">
-            <button class="tabs__item tabs__item--active">All <sup>17</sup></button>
-            <button class="tabs__item">Marketing <sup>4</sup></button>
-            <button class="tabs__item">Management <sup>3</sup></button>
-            <button class="tabs__item">HR & Recruiting <sup>5</sup></button>
-            <button class="tabs__item">Design <sup>2</sup></button>
-            <button class="tabs__item">Development <sup>3</sup></button>
+            <button class="tabs__item tabs__item--active" data-category="All">
+              All <sup></sup>
+            </button>
+            <button class="tabs__item" data-category="Marketing">Marketing <sup></sup></button>
+            <button class="tabs__item" data-category="Management">Management <sup></sup></button>
+            <button class="tabs__item" data-category="HR & Recruiting">
+              HR & Recruiting <sup></sup>
+            </button>
+            <button class="tabs__item" data-category="Design">Design <sup></sup></button>
+            <button class="tabs__item" data-category="Development">Development <sup></sup></button>
           </div>
           <div class="search">
             <input type="text" class="search__input" placeholder="Search course..." />
