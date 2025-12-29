@@ -1,5 +1,7 @@
 # Online Courses Catalog
 
+https://testspanativecards322.netlify.app/
+
 Каталог онлайн-курсов на HTML + JavaScript + SCSS через Vite.
 
 ## Быстрый старт
@@ -74,4 +76,5 @@ docker compose up prod --build
 ## Что хотел бы улучшить
 
 - **Обработка ошибок** - отображение ошибки о неудавшейся загрузке
+
 
